@@ -25,7 +25,7 @@ $users = Get-MgUser -Property DisplayName, Mail, ProxyAddresses -All
 
 # Alle Proxy-Adressen abrufen
 foreach ($user in $users) {
-    $allsmtpAddresses = $user.ProxyAddresses | Where-Object {$_ -like 'SMTP:*'} | ForEach-Object { $_ -replace 'SMTP:' }
+    $allsmtpAddresses += $user.ProxyAddresses | Where-Object {$_ -like 'SMTP:*'} | ForEach-Object { $_ -replace 'SMTP:' }
 }
 
 # Alle sekundären Proxy-Adressen abrufen
